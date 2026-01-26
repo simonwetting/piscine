@@ -43,15 +43,18 @@ void	ft_putzero(int i, int total_digits)
 {
 	int		count;
 
-	count = 0;
+	count = 1;
 	while (i / 10 > 0)
 	{
-		count ++;
-		i = i / 10;
+		count++;
+		printf("i>%d\n", i);
+		i = 0;
 	}
-	ft_putnbr(count);
-	//while (total_digits - count-- > 0)
-		//write(1, "0", 1);
+	//ft_putnbr(count);
+	printf("total digits: %d\ncount>%d\n", total_digits, count);
+	// while (total_digits - count-- > 0);
+	// 	printf("%d\n", total_digits - count);
+	// 	write(1, "0", 1);
 }
 
 void	ft_print_combn(int n)
@@ -61,8 +64,6 @@ void	ft_print_combn(int n)
 	max_int = factor(1, n);
 	for (int m = 0; m < max_int; m++)
 	{
-		if (m == 11)
-			write(1, "test\n", 5);
 		ft_putzero(m, n);
 		ft_putnbr(m);
 		write(1, ", \n", 2);
@@ -72,5 +73,5 @@ void	ft_print_combn(int n)
 int		main(int status, char **args)
 {
 	printf("Status: %d\nArgs[1]: %s\n", status, args[1]);
-	ft_print_combn(3);
+	ft_print_combn(2);
 }
