@@ -59,18 +59,33 @@ void	ft_putzero(int i, int amount)
 		write(1, "0", 1);
 }
 
-// int		count_digits(int i)
-// {
-// 	int		count;
+int		unique(int i, int n)
+{
+	int		numbers[n];
+	int		m;
+	int		k;
 
-// 	count = 1;
-// 	while (i > 9)
-// 	{
-// 		i /= 10;
-// 		count++;
-// 	}
-// 	return count;
-// }
+	m = 0;
+	while (m < n)
+	{
+		numbers[m] = i % 10;
+		i /= 10;
+		m++;
+	}
+	m = 0;
+	while (m < n)
+	{
+		k = 0;
+		while (k < n)
+		{
+			if (numbers[m] == numbers[k] && m != k)
+				return (0);
+			k++;
+		}
+		m++;
+	}
+	return (1);
+}
 
 void	ft_print_combn(int n)
 {
@@ -79,9 +94,12 @@ void	ft_print_combn(int n)
 	max_int = factor(1, n);
 	for (int m = 0; m < max_int; m++)
 	{
-		ft_putzero(m, n);
-		ft_putnbr(m);
-		write(1, ", \n", 2);
+		if (unique(m, n))
+		{
+			ft_putzero(m, n);
+			ft_putnbr(m);
+			write(1, ", \n", 2);
+		}
 	}
 	write(1, "\n", 1);
 }
@@ -91,4 +109,5 @@ int		main()
 	//printf("Status: %d\nArgs[1]: %s\n", status, args[1]);
 	ft_print_combn(5);
 	//printf("count>%d\n", count_digits(12345));
+	printf("%d", unique(12345, 5));
 }
