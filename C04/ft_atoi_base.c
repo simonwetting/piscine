@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_atoi.c                                          :+:    :+:            */
+/*   ft_atoi_base.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/01/29 10:48:21 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/01/29 10:48:21 by anonymous     ########   odam.nl         */
+/*   Created: 2026/01/29 18:17:10 by anonymous     #+#    #+#                 */
+/*   Updated: 2026/01/29 18:17:10 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
-int	factor(int i, int factor)
-{
-	int		n;
-
-	n = -1;
-	while (++n < factor - 1)
-		i *= 10;
-	return (i);
-}
 
 int	ft_isspace(char c)
 {
@@ -30,20 +20,32 @@ int	ft_isspace(char c)
 		return (0);
 }
 
-int	array_to_int(int *array, int size)
+int	read_prefix(char **str)
 {
 	int		n;
-	int		output;
+	int		negative;
 
-	n = -1;
-	output = 0;
-	while (++n < size)
-		//printf("n>%d\nsize>%d\n", n, size);
-		output += factor(array[n], size - n);
-	return (output);
+	n = 0;
+	negative = 1;
+	while (ft_isspace(*(str[n])))
+		n++;
+	printf("n>%d\n", n);
+	while (*(str[n]) == '+' || *(str[n]) == '-')
+	{
+		if (*(str[n]) == '-')
+			negative *= -1;
+		n++;
+	}
+	*str = *str + n;
+	printf("n>%d\n", n);
 }
 
-int ft_atoi(char *str)
+void	increment_pointer(char **str, int n)
+{
+	*str = *str + n;
+}
+
+int ft_atoi_base(char *str, char *base)
 {
 	int		n;
 	int		negative;
@@ -53,27 +55,24 @@ int ft_atoi(char *str)
 	n = 0;
 	negative = 1;
 	count_digits = 0;
-	while (ft_isspace(str[n]))
-		n++;
-	while (str[n] == '+' || str[n] == '-')
-	{
-		if (str[n] == '-')
-			negative *= -1;
-		n++;
-	}
+	read_prefix(&str);
+	printf("%s", str);
 	while (str[n] >= '0' && str[n] <= '9')
 	{
 		number[count_digits] = str[n] - '0';
 		count_digits++;
 		n++;
 	}
-	return (negative * array_to_int(number, count_digits));
+	//printf("%d digits\n", count_digits);
+	//return (negative * array_to_int(number, count_digits));
 }
 
 int	main(void)
 {
-	int		i;
+	char	*str = "Hello world";
 
-	i = ft_atoi("    	+-++---182312");
-	printf("%d", i);
+	// printf("%s\n", str);
+	// increment_pointer(&str, 3);
+	// printf("%s\n", str);
+	ft_atoi_base("    +--+-12345", "0123456789");
 }
