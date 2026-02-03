@@ -26,7 +26,6 @@ void	ft_putnbr(int nb)
 	if (nb > 9)
 	{
 		c = '0' + nb % 10;
-		nb = (nb - (nb % 10)) / 10;
 		ft_putnbr(nb / 10);
 		write(1, &c, 1);
 	}
@@ -47,6 +46,8 @@ void	ft_putnbr(int nb)
 int	main(void)
 {
 	ft_putnbr(123213);
+	write(1, "\n", 1);
 	ft_putnbr(-123213);
+	write(1, "\n", 1);
 	ft_putnbr(0);
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
 
 int	ft_isspace(char c)
 {
@@ -74,5 +75,7 @@ int	main(void)
 	// printf("%s\n", str);
 	// increment_pointer(&str, 3);
 	// printf("%s\n", str);
-	ft_atoi_base("    +--+-12345", "0123456789");
+	//ft_atoi_base("    +--+-12345", "0123456789");
+	int	c = 140;
+	write(1, &c, 1);
 }
