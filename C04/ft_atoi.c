@@ -74,6 +74,6 @@ int	main(void)
 {
 	int		i;
 
-	i = ft_atoi("    	+-++---182312");
+	i = ft_atoi("    	+-++--2147483648");
 	printf("%d", i);
 }
