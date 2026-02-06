@@ -24,5 +24,14 @@ void	ft_putstr(char *str)
 
 int	main(int arg_count, char **args)
 {
-	ft_putstr(args[0]);
+	int		n;
+	char 	*str = args[0];
+	int		slash;
+
+	n = -1;
+	while (str[++n])
+		if (str[n] == '/')
+			slash = n;
+	ft_putstr(".");
+	ft_putstr(str + slash);
 }
