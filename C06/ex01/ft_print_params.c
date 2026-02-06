@@ -27,17 +27,17 @@ int ft_strcmp(char *s1, char *s2)
 	return (s1[n] -s2[n]);
 }
 
-void	swap(char *s1, char *s2, int *unsorted)
-{
-	char	*tmp;
+// void	swap(char *s1, char *s2, int *unsorted)
+// {
+// 	char	*tmp;
 
-	*unsorted = 1;
-	tmp = s2;
-	s2 = s1;
-	s1 = tmp;
-	s1 = 0;
-	//write(1, "Swapping", 1);
-}
+// 	*unsorted = 1;
+// 	tmp = s2;
+// 	s2 = s1;
+// 	s1 = tmp;
+// 	s1 = 0;
+// 	//write(1, "Swapping", 1);
+// }
 
 void	ft_putstr(char *str)
 {
@@ -49,33 +49,39 @@ void	ft_putstr(char *str)
 	write(1, str, count);
 }
 
+void	put_strings(char **str, int amount)
+{
+	int		n;
+
+	n = -1;
+	while (++n < amount)
+	{
+		ft_putstr(str[n]);
+		write(1, "\n", 1);
+	}
+}
+
 int		main(int arg_count, char **args)
 {
 	int		n;
 	int		unsorted;
+	char	*tmp;
 
 	unsorted = 1;
 	while (unsorted)
 	{
 		unsorted = 0;
 		n = 0;
-		while (++n < arg_count)
+		while (++n < arg_count -1)
 		{
 			if (ft_strcmp(args[n], args[n + 1]) > 0)
 			{
-				printf("n = %d>%s > %s\n", n, args[n], args[n + 1]);
-				swap(args[n], args[n + 1], &unsorted);
+				tmp = args[n];
+				args[n] = args[n+1];
+				args[n + 1] = tmp;
+				unsorted = 1;
 			}
-			else
-				printf("n = %d>%s < %s\n", n, args[n], args[n + 1]);
 		}
-			
 	}
-	printf("test");
-	n = -1;
-	while (++n < arg_count)
-		ft_putstr(args[n]);
-	// printf("n>%s\nn+1>%s\n", args[1], args[2]);
-	// swap(args[1], args[2], &unsorted);
-	// printf("n>%s\nn+1>%s\n", args[1], args[2]);
+	put_strings(args + 1, arg_count -1);
 }
