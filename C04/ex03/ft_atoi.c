@@ -67,32 +67,33 @@ int	ft_atoi(char *str)
 	return (negative * array_to_int(number, count_digits));
 }
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// int	main(void)
-// {
-// 	printf("%d\n", ft_atoi("2147483648"));
-// 	printf("%d\n", atoi("2147483648"));
-// 	printf("%d\n", ft_atoi("2147483647"));
-// 	printf("%d\n", atoi("2147483647"));
-// 	printf("%d\n", ft_atoi("+0"));
-// 	printf("%d\n", atoi("+0"));
-// 	printf("%d\n", ft_atoi("-2147483648"));
-// 	printf("%d\n", atoi("-2147483648"));
-// 	printf("%d\n", ft_atoi("-10"));
-// 	printf("%d\n", atoi("-10"));
-// 	printf("%d\n", ft_atoi("+10"));
-// 	printf("%d\n", atoi("+10"));
-// 	printf("%d\n", ft_atoi("++10"));
-// 	printf("%d\n", atoi("++10"));
-// 	printf("%d\n", ft_atoi("--10"));
-// 	printf("%d\n", atoi("--10"));
-// 	printf("%d\n", ft_atoi("   10"));
-// 	printf("%d\n", atoi("    10"));
-// 	printf("%d\n", ft_atoi("   10ab"));
-// 	printf("%d\n", atoi("    10ab"));
-// 	printf("%d\n", ft_atoi("   10ab1"));
-// 	printf("%d\n", atoi("    10ab1"));
-// 	printf("%d\n", ft_atoi("   10ab324"));
-// 	printf("%d\n", atoi("    10ab324"));
-// }
+#include <stdio.h>
+#include <stdlib.h>
+int	main(void)
+{
+	printf("%d\n\n", ft_atoi(" ---+--+1234ab567"));
+	printf("%d\n", ft_atoi("2147483648"));
+	printf("%d\n", atoi("2147483648"));
+	printf("%d\n", ft_atoi("2147483647"));
+	printf("%d\n", atoi("2147483647"));
+	printf("%d\n", ft_atoi("+0"));
+	printf("%d\n", atoi("+0"));
+	printf("%d\n", ft_atoi("-2147483648"));
+	printf("%d\n", atoi("-2147483648"));
+	printf("%d\n", ft_atoi("-10"));
+	printf("%d\n", atoi("-10"));
+	printf("%d\n", ft_atoi("+10"));
+	printf("%d\n", atoi("+10"));
+	printf("%d\n", ft_atoi("++10"));
+	printf("%d\n", atoi("++10"));
+	printf("%d\n", ft_atoi("--10"));
+	printf("%d\n", atoi("--10"));
+	printf("%d\n", ft_atoi("   10"));
+	printf("%d\n", atoi("    10"));
+	printf("%d\n", ft_atoi("   10ab"));
+	printf("%d\n", atoi("    10ab"));
+	printf("%d\n", ft_atoi("   10ab1"));
+	printf("%d\n", atoi("    10ab1"));
+	printf("%d\n", ft_atoi("   10ab324"));
+	printf("%d\n", atoi("    10ab324"));
+}

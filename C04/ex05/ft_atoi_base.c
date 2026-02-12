@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
+#include <stdio.h>
 
 int	factor_base(int i, int factor, int base)
 {
@@ -56,7 +56,7 @@ int	prefix(char **pointer)
 	negative = 1;
 	while ((str[n] >= 9 && str[n] <= 13) || str[n] == ' ')
 		n++;
-	if (str[n] == '+' || str[n] == '-')
+	while (str[n] == '+' || str[n] == '-')
 	{
 		if (str[n] == '-')
 			negative *= -1;
@@ -82,7 +82,7 @@ int	ft_atoi_base(char *str, char *base)
 	n = 0;
 	count_digits = 0;
 	negative = prefix(&str);
-	while (str[n])
+	while (str[n] >= '0' && str[n] <= '9')
 	{
 		number[count_digits] = find_in_base(str[n], base);
 		if (number[count_digits] < 0)
@@ -93,60 +93,63 @@ int	ft_atoi_base(char *str, char *base)
 	return (negative * array_to_int(number, count_digits, count_base));
 }
 
-// #include <stdlib.h>
-// #include <assert.h>
-// int	main(void)
-// {
-// 	printf("ft%d\n", ft_atoi_base("2147483648", "0123456789"));
-// 	printf("at%d\n\n", atoi("2147483648"));
-// 	assert(ft_atoi_base("2147483648", "0123456789") == atoi("2147483648"));
-// 	printf("ft%d\n", ft_atoi_base("2147483649", "0123456789"));
-// 	printf("at%d\n\n", atoi("2147483649"));
-// 	assert(ft_atoi_base("2147483649", "0123456789") == atoi("2147483649"));
-// 	printf("ft%d\n", ft_atoi_base("2147483647", "0123456789"));
-// 	printf("at%d\n\n", atoi("2147483647"));
-// 	printf("ft%d\n", ft_atoi_base("+0", "0123456789"));
-// 	printf("at%d\n\n", atoi("+0"));
-// 	printf(">ft %d\n", ft_atoi_base("-2147483648", "0123456789"));
-// 	printf(">at %d\n\n", atoi("-2147483648"));
-// 	printf(">ft %d\n", ft_atoi_base("-2", "0123456789"));
-// 	printf(">at %d\n\n", atoi("-2"));
-// 	printf(">ft %d\n", ft_atoi_base("--2147483648", "0123456789"));
-// 	printf(">at %d\n\n", atoi("--2147483648"));
-// 	printf("ft %d\n", ft_atoi_base("-10", "0123456789"));
-// 	printf("at %d\n\n", atoi("-10"));
-// 	printf("ft %d\n", ft_atoi_base("+10", "0123456789"));
-// 	printf("at %d\n", atoi("+10"));
-// 	printf("%d\nOTHER BASES\n", atoi("+10"));
+#include <stdlib.h>
+#include <assert.h>
+int	main(void)
+{
+	// printf("ft%d\n", ft_atoi_base("2147483648", "0123456789"));
+	// printf("at%d\n\n", atoi("2147483648"));
+	// //assert(ft_atoi_base("2147483648", "0123456789") == atoi("2147483648"));
+	// printf("ft%d\n", ft_atoi_base("2147483649", "0123456789"));
+	// printf("at%d\n\n", atoi("2147483649"));
+	// //assert(ft_atoi_base("2147483649", "0123456789") == atoi("2147483649"));
+	// printf("ft%d\n", ft_atoi_base("2147483647", "0123456789"));
+	// printf("at%d\n\n", atoi("2147483647"));
+	// printf("ft%d\n", ft_atoi_base("+0", "0123456789"));
+	// printf("at%d\n\n", atoi("+0"));
+	printf(">ft %d\n", ft_atoi_base("-2147483648", "0123456789"));
+	// printf(">at %d\n\n", atoi("-2147483648"));
+	// printf(">ft %d\n", ft_atoi_base("-2", "0123456789"));
+	// printf(">at %d\n\n", atoi("-2"));
+	// printf(">ft %d\n", ft_atoi_base("--2147483648", "0123456789"));
+	// printf(">at %d\n\n", atoi("--2147483648"));
+	// printf("ft %d\n", ft_atoi_base("-10", "0123456789"));
+	// printf("at %d\n\n", atoi("-10"));
+	// printf("ft %d\n", ft_atoi_base("+10", "0123456789"));
+	// printf("at %d\n", atoi("+10"));
+	// printf("%d\nOTHER BASES\n", atoi("+10"));
 
-// 	printf("597>%d\n", ft_atoi_base("255", "0123456789ABCDEF"));
-// 	printf("AA>%d\n", ft_atoi_base("AA", "0123456789ABCDEF"));
-// 	printf("255>%d\n", ft_atoi_base("255", "0123456789"));
-// 	printf("0>%d\n", ft_atoi_base("255", "26"));
-// 	printf("3>%d\n", ft_atoi_base("255", "25"));
-// 	printf("3>%d\n", ft_atoi_base("011", "01"));
-// 	printf("0>%d\n", ft_atoi_base("255", "01"));
-// 	printf("2>%d\n", ft_atoi_base("10", "01"));
-// 	printf("1010>base2>10>%d\n", ft_atoi_base("1010", "01"));
-// 	printf("-10>%d\n", ft_atoi_base("-10", "0123456789"));
-// 	printf("10>%d\n", ft_atoi_base("+10", "0123456789"));
+	// printf("597>%d\n", ft_atoi_base("255", "0123456789ABCDEF"));
+	// printf("AA>%d\n", ft_atoi_base("AA", "0123456789ABCDEF"));
+	// printf("255>%d\n", ft_atoi_base("255", "0123456789"));
+	// printf("0>%d\n", ft_atoi_base("255", "26"));
+	// printf("3>%d\n", ft_atoi_base("255", "25"));
+	// printf("3>%d\n", ft_atoi_base("011", "01"));
+	// printf("0>%d\n", ft_atoi_base("255", "01"));
+	// printf("2>%d\n", ft_atoi_base("10", "01"));
+	// printf("1010>base2>10>%d\n", ft_atoi_base("1010", "01"));
+	// printf("-10>%d\n", ft_atoi_base("-10", "0123456789"));
+	// printf("10>%d\n", ft_atoi_base("+10", "0123456789"));
 
-// 	printf(">AA>170>%d\n", ft_atoi_base("AA", "0123456789ABCDEF"));
-// 	printf(">FF>255>%d\n", ft_atoi_base("FF", "0123456789ABCDEF"));
+	// printf(">AA>170>%d\n", ft_atoi_base("AA", "0123456789ABCDEF"));
+	// printf(">FF>255>%d\n", ft_atoi_base("FF", "0123456789ABCDEF"));
 
-// 	printf("INVALID INPUT\n");
-// 	printf("%d\n", ft_atoi_base("AA", ""));
-// 	printf("%d\n", ft_atoi_base("FF", "F"));
-// 	printf("%d\n", ft_atoi_base("", "0123456789ABCDEF"));
-// 	printf("%d\n", ft_atoi_base("", ""));
-// 	printf("PLus and minus\n");
-// 	printf("ato>%d\n", atoi("-+10"));
-// 	printf("ft>%d\n", ft_atoi_base("-+10", "0123456789"));
-// 	printf("at>%d\n", atoi("+-10"));
-// 	printf("ft>%d\n", ft_atoi_base("+-10", "0123456789"));
-// 	printf("at>%d\n", atoi("--10"));
-// 	printf("ft>%d\n", ft_atoi_base("--10", "0123456789"));
-// 	printf("at>%d\n", atoi("++10"));
-// 	printf("ft>%d\n", ft_atoi_base("++10", "0123456789"));
-// 	//test
-// }
+	// printf("INVALID INPUT\n");
+	// printf("%d\n", ft_atoi_base("AA", ""));
+	// printf("%d\n", ft_atoi_base("FF", "F"));
+	// printf("%d\n", ft_atoi_base("", "0123456789ABCDEF"));
+	// printf("%d\n", ft_atoi_base("", ""));
+	// printf("PLus and minus\n");
+	// printf("ato>%d\n", atoi("-+10"));
+	// printf("ft>%d\n", ft_atoi_base("-+10", "0123456789"));
+	// printf("at>%d\n", atoi("+-10"));
+	// printf("ft>%d\n", ft_atoi_base("+-10", "0123456789"));
+	// printf("at>%d\n", atoi("--10"));
+	// printf("ft>%d\n", ft_atoi_base("--10", "0123456789"));
+	// printf("at>%d\n", atoi("++10"));
+	// printf("ft>%d\n", ft_atoi_base("++10", "0123456789"));
+	//test
+	printf("-1234>%d\n", ft_atoi_base(" ---+--+1234ab567", "0123456789"));
+			// printf("str[%d]=%c\n", n , str[n]);
+
+}

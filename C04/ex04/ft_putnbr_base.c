@@ -15,9 +15,17 @@
 int		duplicates(char *str)
 {
 	int		n;
+	int		m;
 
-	n = 0;
-	if
+	n = -1;
+	while (str[++n])
+	{
+		m = -1;
+		while (str[++m])
+			if(str[n] == str[m] && n != m)
+				return (1);
+	}
+	return (0);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
@@ -25,6 +33,8 @@ void	ft_putnbr_base(int nbr, char *base)
 	int		count_base;
 	char	c;
 
+	if (duplicates(base))
+		return ;
 	count_base = 0;
 	while (base[count_base])
 		count_base++;
@@ -47,15 +57,15 @@ void	ft_putnbr_base(int nbr, char *base)
 	write(1, &c, 1);
 }
 
-// int	main(void)
-// {
-// 	ft_putnbr_base(-2147483648, "0123456789");
-// 	write(1, "\n", 1);
-// 	ft_putnbr_base(2147483647, "0123456789");
-// 	write(1, "\n", 1);
-// 	ft_putnbr_base(0, "0123456789");
-// 	write(1, "\n", 1);
-// 	ft_putnbr_base(10, "01");
-// 	write(1, "\n", 1);
-// 	ft_putnbr_base(255, "0123456789ABCDEF");
-// }
+int	main(void)
+{
+	ft_putnbr_base(-2147483648, "0123456789");
+	write(1, "\n", 1);
+	ft_putnbr_base(2147483647, "0123456789");
+	write(1, "\n", 1);
+	ft_putnbr_base(0, "0123456789");
+	write(1, "\n", 1);
+	ft_putnbr_base(10, "01");
+	write(1, "\n", 1);
+	ft_putnbr_base(255, "0123456789ABCDEF");
+}
