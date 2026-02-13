@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_range.c                                         :+:    :+:            */
+/*   ft_recursive_factorial.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/02/06 16:47:45 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/02/12 15:44:48 by swetting      ########   odam.nl         */
+/*   Created: 2026/02/04 10:00:33 by anonymous     #+#    #+#                 */
+/*   Updated: 2026/02/10 10:02:43 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_range(int min, int max)
+int	ft_recursive_factorial(int nb)
 {
-	int		length;
-	int		*range;
-
-	if (min >= max)
+	if (nb < 0)
 		return (0);
-	length = max - min;
-	range = malloc(sizeof(int) * length);
-	length++;
-	while (--length >= 0)
-		range[length] = min + length;
-	return (range);
+	if (nb == 0)
+		return (1);
+	return (ft_recursive_factorial(nb - 1) * nb);
 }
 
 // #include <stdio.h>
 // int	main(void)
 // {
-// 	int		*range;
-// 	int		min = -10;
-// 	int		max = 10;
-// 	int		length = max - min;
-// 	int		n = 0;
-
-// 	range = ft_range(min, max);
-// 	while(n < length)
-// 	printf("%d\n", range[n++]);
+// 	printf("%d\n", ft_recursive_factorial(-1));
+// 	printf("%d\n", ft_recursive_factorial(0));
+// 	printf("%d\n", ft_recursive_factorial(1));
+// 	printf("%d\n", ft_recursive_factorial(2));
+// 	printf("%d\n", ft_recursive_factorial(3));
+// 	printf("%d\n", ft_recursive_factorial(4));
+// 	printf("%d", ft_recursive_factorial(5));
 // }

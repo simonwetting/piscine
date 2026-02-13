@@ -6,19 +6,18 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/02/09 19:05:27 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/02/09 19:05:27 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/02/12 15:43:33 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
 	int		length;
 
 	length = 0;
-	while(str[length])
+	while (str[length])
 		length++;
 	return (length);
 }
@@ -33,7 +32,7 @@ int	ft_strlcpy(char *dest, char *src)
 	return (n);
 }
 
-char *ft_strjoin(int size, char **strs, char *sep)
+char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*str;
 	int		n;
@@ -60,12 +59,17 @@ char *ft_strjoin(int size, char **strs, char *sep)
 	return (str);
 }
 
-int		main(void)
-{
-	// char	fill[4][6] = {{'t', 'e', 's', 't', '1', '\0'}, {'t', 'e', 's', 't', '5', '\0'}, {'t', 'e', 's', 't', '3', '\0'}, {'t', 'e', 's', 't', '2', '\0'}};
-	char	sep[4] = {':', ' ', ':', '\0'};
+// #include <stdio.h>
+// int		main(void)
+// {
+// 	char	fill[4][6] = 
+// 		{{'t', 'e', 's', 't', '1', '\0'},
+// 		{'t', 'e', 's', 't', '5', '\0'},
+// 		{'t', 'e', 's', 't', '3', '\0'},
+// 		{'t', 'e', 's', 't', '2', '\0'}};
+// 	char	sep[4] = {':', ' ', ':', '\0'};
 
-	// char	**strs = fill;
-	char	*strs[] = {"test1", "test5", "test3", "test2"};
-	printf("%s", ft_strjoin(3, strs, sep));
-}
+// 	// char	**strs = fill;
+// 	char	*strs[] = {"test1", "test5", "test3", "test2"};
+// 	printf("%s", ft_strjoin(3, strs, sep));
+// }

@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_putstr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/02/06 16:47:52 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/02/12 15:43:50 by swetting      ########   odam.nl         */
+/*   Created: 2026/01/27 17:14:11 by anonymous     #+#    #+#                 */
+/*   Updated: 2026/02/11 14:01:31 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-char	*ft_strdup(char *src)
+void	ft_putstr(char *str)
 {
-	int		length;
-	char	*dup;
+	int	count;
 
-	length = 0;
-	while (src[length])
-		length++;
-	dup = malloc(length);
-	length = -1;
-	while (src[++length])
-		dup[length] = src[length];
-	return (dup);
+	count = 0;
+	while (str[count])
+		count++;
+	write(1, str, count);
 }
 
-// #include <stdio.h>
-// #include <string.h>
-// int		main(void)
+// int	main(void)
 // {
-// 	char *str = "Test";
-// 	char *dup = ft_strdup(str);
-// 	// char *dup = strdup(str);
-
-// 	printf("%s", dup);
+// 	ft_putstr("\n");
+// 	ft_putstr("test");
+// 	ft_putstr("");
+// 	ft_putstr("test");
 // }

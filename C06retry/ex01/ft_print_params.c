@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_print_params.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/02/06 16:47:52 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/02/12 15:43:50 by swetting      ########   odam.nl         */
+/*   Created: 2026/02/05 17:18:52 by anonymous     #+#    #+#                 */
+/*   Updated: 2026/02/09 13:20:34 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-char	*ft_strdup(char *src)
+void	ft_putstr(char *str)
 {
-	int		length;
-	char	*dup;
+	int	count;
 
-	length = 0;
-	while (src[length])
-		length++;
-	dup = malloc(length);
-	length = -1;
-	while (src[++length])
-		dup[length] = src[length];
-	return (dup);
+	count = 0;
+	while (str[count])
+		count++;
+	write(1, str, count);
+	write(1, "\n", 1);
 }
 
-// #include <stdio.h>
-// #include <string.h>
-// int		main(void)
-// {
-// 	char *str = "Test";
-// 	char *dup = ft_strdup(str);
-// 	// char *dup = strdup(str);
+int	main(int argcount, char **args)
+{
+	int		n;
 
-// 	printf("%s", dup);
-// }
+	n = 1;
+	while (n < argcount)
+		ft_putstr(args[n++]);
+}
